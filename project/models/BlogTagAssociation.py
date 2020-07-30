@@ -3,7 +3,7 @@ from datetime import datetime
 from project import db
 
 class BlogTagAssociation(db.Model):
-    __tablename__ = 'BlogTagAssociation'
+    __tablename__ = 'BlogTagAssociationTable'
     id = db.Column(
         'Id',
         db.Integer,
@@ -12,12 +12,12 @@ class BlogTagAssociation(db.Model):
     blog_id = db.Column(
         'BlogId',
         db.Integer,
-        db.ForeignKey('BlogModel.Id')
+        db.ForeignKey('BlogModelTable.Id')
     )
     tag_id = db.Column(
         'TagId',
         db.Integer,
-        db.ForeignKey('TagModel.Id')
+        db.ForeignKey('TagModelTable.Id')
     )
     date_added = db.Column(
         'DateAddedUtc',

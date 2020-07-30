@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class BlogModel(db.Model):
-    __tablename__ = 'BlogModel'
+    __tablename__ = 'BlogModelTable'
     id = db.Column(
         'Id',
         db.Integer,
@@ -12,7 +12,7 @@ class BlogModel(db.Model):
     author_id = db.Column(
         'AuthorId',
         db.Integer,
-        db.ForeignKey('UserModel.Id')
+        db.ForeignKey('UserModelTable.Id')
     )
     title = db.Column(
         'Title',
@@ -40,7 +40,7 @@ class BlogModel(db.Model):
     )
     tags = db.relationship(
         'TagModel',
-        secondary='BlogTagAssociation',
+        secondary='BlogTagAssociationTable',
         uselist=True,
     )
 

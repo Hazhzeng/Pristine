@@ -69,6 +69,6 @@ def is_account_credential_valid(email: str, password: str) -> bool:
     if user is None:
         return False
 
-    bcrypt_hash = user.hash.encode(encoding='utf-8')
+    bcrypt_hash = user.hash
     encoded_password = password.encode(encoding='utf-8')
     return bcrypt.checkpw(encoded_password, bcrypt_hash)

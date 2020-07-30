@@ -2,7 +2,7 @@ from project import db
 from datetime import datetime
 
 class TagModel(db.Model):
-    __tablename__ = 'TagModel'
+    __tablename__ = 'TagModelTable'
     id = db.Column(
         'Id',
         db.Integer,

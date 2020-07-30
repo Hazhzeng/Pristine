@@ -1,7 +1,7 @@
 from project import db
 
 class UserModel(db.Model):
-    __tablename__ = 'UserModel'
+    __tablename__ = 'UserModelTable'
     id = db.Column(
         'Id',
         db.Integer,
