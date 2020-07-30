@@ -1,8 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
 import os
 import json
 
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 TEMPLATE_DIR = os.path.join('.', 'static')
 STATIC_DIR = os.path.join('.', 'static')
 DIST_DIR = os.path.join('.', 'static', 'dist')
@@ -18,27 +21,16 @@ app.config['TEMPLATE_DIR'] = TEMPLATE_DIR
 app.config['STATIC_DIR'] = STATIC_DIR
 app.config['DIST_DIR'] = DIST_DIR
 
-CONFIG_FILE = os.path.join(app.root_path, '..', 'roject.config')
-
-with open(CONFIG_FILE, 'r') as config_file:
-    config = json.load(config_file)
-    app.config.update(dict(
-        SQLALCHEMY_DATABASE_URI=''
-        '{dialect}+{driver}://{username}:{password}@{host}:{port}/{database}'\
-            .format(
-                dialect=config['dialect'],
-                driver=config['driver'],
-                username=config['username'],
-                password=config['password'],
-                host=config['host'],
-                port=config['port'],
-                database=config['database'],
-            ),
-    ))
-
-app.config.update(dict(SQLALCHEMY_TRACK_MODIFICATIONS='False'))
+if os.getenv('CONNECTION_STRING') is not None:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('CONNECTION_STRING')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'False'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'False'
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db, directory='migrations')
 
 import project.views.views
 import project.views.api
+import project.models

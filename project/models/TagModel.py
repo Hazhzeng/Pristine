@@ -1,10 +1,8 @@
 from project import db
 from datetime import datetime
 
-from .BlogTagAssociation import BlogTagAssociation
-
 class TagModel(db.Model):
-    __tablename__ = 'tag'
+    __tablename__ = 'TagModel'
     id = db.Column(
         'Id',
         db.Integer,
