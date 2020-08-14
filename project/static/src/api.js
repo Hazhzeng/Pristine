@@ -41,6 +41,11 @@ export default {
       .then(response_handler)
   },
 
+  getAllBlogDates: () => {
+    return get_request('/api/blog/dates')
+      .then(response_handler)
+  },
+
   getAccountEmail: email => {
     return get_request(`/api/account/${email}`)
       .then(response_handler);

@@ -4,10 +4,22 @@ import {
   definition as blog,
   getAllTagsSuccess, getAllTagsFailure,
   getAllBlogsSuccess, getAllBlogsFailure,
+  getAllBlogDatesSuccess, getAllBlogDatesFailure,
   submitBlogSuccess, submitBlogFailure,
   deleteBlogSuccess, deleteBlogFailure,
 } from '../actions/BlogActions';
 import { startLoading, stopLoading } from '../actions/UiActions';
+
+function *getAllBlogDatesSaga() {
+  yield put(startLoading());
+  try {
+    const data = yield call(Api.getAllBlogDates);
+    yield put(getAllBlogDatesSuccess(data));
+  } catch (error) {
+    yield put(getAllBlogDatesFailure(error))
+  }
+  yield put(stopLoading());
+}
 
 function *getAllBlogsSaga() {
   yield put(startLoading());
@@ -62,6 +74,7 @@ function *deleteBlogSaga(action) {
 }
 
 export default [
+  takeLatest(blog.GET_ALL_BLOG_DATES, getAllBlogDatesSaga),
   takeLatest(blog.GET_ALL_TAGS, getAllTagsSaga),
   takeLatest(blog.GET_ALL_BLOGS, getAllBlogsSaga),
   takeLatest(blog.SUBMIT_BLOG, submitBlogSaga),

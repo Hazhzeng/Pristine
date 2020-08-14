@@ -13,7 +13,7 @@ module.exports = merge(common, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'PRISTINE_MODE': '"development"',
+        'WEBSITE_MODE': JSON.stringify('development')
       }
     }),
     new webpack.SourceMapDevToolPlugin({

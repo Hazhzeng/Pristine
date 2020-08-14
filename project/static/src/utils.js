@@ -1,6 +1,7 @@
 import moment from 'moment';
 import urlUtil from 'url';
 import MobileDetect from 'mobile-detect';
+import constants from './constants';
 
 const _fetch = (method, url, head = {}, body = null) => {
   const request_data = {

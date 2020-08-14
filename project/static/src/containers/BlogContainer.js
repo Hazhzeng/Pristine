@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BlogPreviewList } from '../components/blog';
 import { getAllBlogs, deleteBlog, editBlog } from '../actions/BlogActions';
@@ -20,6 +21,14 @@ class Blog extends React.PureComponent {
     );
   }
 }
+
+Blog.propTypes = {
+  getAllBlogs: PropTypes.func,
+  blogs: PropTypes.array,
+  userId: PropTypes.number,
+  deleteBlog: PropTypes.func,
+  editBlog: PropTypes.func
+};
 
 export const BlogContainer = connect(
   state => ({

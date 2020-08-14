@@ -57,6 +57,15 @@ def get_all_blogs() -> List[BlogModel]:
     return blogs
 
 
+def get_all_blog_dates() -> List[datetime]:
+    blog_date_array = db.session.query(
+        BlogModel.last_update
+    ).order_by(
+        BlogModel.last_update.desc()
+    ).all()
+    return [bd[0] for bd in blog_date_array]
+
+
 def get_all_tags() -> List[TagModel]:
     tags = db.session.query(
         BlogTagAssociation
@@ -89,6 +98,10 @@ def serialise_blogs(blogs: List[BlogModel]) -> Dict[str, any]:
             'update_date': blog.last_update.isoformat()
         })
     return result
+
+
+def serialize_blog_dates(blog_dates: List[datetime]) -> List[str]:
+    return [bd.isoformat() for bd in blog_dates]
 
 
 def serialise_tags(associations: List[BlogTagAssociation]) -> Dict[str, any]:

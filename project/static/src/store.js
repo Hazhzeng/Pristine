@@ -3,10 +3,11 @@ import { createBrowserHistory } from 'history';
 import { routerMiddleware, connectRouter } from 'connected-react-router';
 import { ApplicationState } from './reducer';
 import sagaWatchers from './sagas';
+import constants from './constants';
 import createSagaMiddleware from 'redux-saga';
 
 /* eslint-disable-next-line */
-const websiteMode = process.env.PRISTINE_MODE;
+const websiteMode = constants.WEBSITE_MODE;
 const sagaMiddleware = createSagaMiddleware();
 
 export const history = createBrowserHistory();

@@ -21,7 +21,7 @@ export class BlogPreviewList extends React.PureComponent {
 }
 
 BlogPreviewList.propTypes = {
-  blogs: PropTypes.arrayOf(PropTypes.object),
+  blogs: PropTypes.array,
   userId: PropTypes.number,
   handleDeleteBlog: PropTypes.func,
   handleEditBlog: PropTypes.func,

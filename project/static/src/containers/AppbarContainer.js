@@ -8,7 +8,7 @@ import { isPhone } from '../utils';
 class Appbar extends React.PureComponent {
   render() {
     const user = _.head(Object.values(this.props.loggedInUsers));
-    const title = user ? user.email : 'Pristine';
+    const title = user ? user.email : '';
     return (
       <ApplicationBar
         title={isPhone ? '' : title}

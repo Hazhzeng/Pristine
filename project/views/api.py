@@ -12,9 +12,11 @@ from project.handlers.blog_handlers import (
     add_blog,
     get_all_tags,
     get_all_blogs,
+    get_all_blog_dates,
     get_blog_by_id,
     serialise_tags,
     serialise_blogs,
+    serialize_blog_dates,
     delete_blog_by_model,
     update_blog_by_model,
 )
@@ -48,6 +50,11 @@ def github_webhook():
 def blog_get():
     blogs = get_all_blogs()
     return response.ok(serialise_blogs(blogs))
+
+@app.route('/api/blog/dates', methods=['GET'])
+def blog_dates_get():
+    blog_dates = get_all_blog_dates()
+    return response.ok(serialize_blog_dates(blog_dates))
 
 @app.route('/api/tag', methods=['GET'])
 def tag_get():

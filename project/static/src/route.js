@@ -3,16 +3,9 @@ import {
   AccountPage,
   ComposePage,
   RoadmapPage,
-  InformationPage,
 } from './pages';
 
 export default [
-  {
-    key: 'about',
-    path: '/',
-    exact: true,
-    component: InformationPage,
-  },
   {
     key: 'articles',
     path: '/articles',

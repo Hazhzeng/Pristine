@@ -16,8 +16,7 @@ module.exports = {
     account: path.resolve(staticPath, 'src', 'pages', 'AccountPage.jsx'),
     compose: path.resolve(staticPath, 'src', 'pages', 'ComposePage.jsx'),
     home: path.resolve(staticPath, 'src', 'pages', 'HomePage.jsx'),
-    roadmap: path.resolve(staticPath, 'src', 'pages', 'RoadmapPage.jsx'),
-    information: path.resolve(staticPath, 'src', 'pages', 'InformationPage.jsx'),
+    roadmap: path.resolve(staticPath, 'src', 'pages', 'RoadmapPage.jsx')
   },
   output: {
     path: path.resolve(staticPath, 'dist'),

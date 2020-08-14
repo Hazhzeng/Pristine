@@ -86,6 +86,11 @@ export default (state = initialState, action) => {
         blogById: newBlogById,
       });
     }
+    case definition.GET_ALL_BLOG_DATES_SUCCESS: {
+      return _.assignIn(state, {
+        blogDates: action.payload.response
+      });
+    }
     case definition.CHANGE_BLOG_TITLE: {
       const oldDraft = state.draftById[action.payload.id] || {};
       oldDraft.title = action.payload.title;

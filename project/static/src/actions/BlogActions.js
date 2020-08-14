@@ -16,6 +16,10 @@ export const definition = {
   GET_ALL_BLOGS_SUCCESS: `[${prefix}]GET_ALL_BLOGS->SUCCESS`,
   GET_ALL_BLOGS_FAILURE: `[${prefix}]GET_ALL_BLOGS->FAILURE`,
 
+  GET_ALL_BLOG_DATES: `[${prefix}]GET_ALL_BLOG_DATES`,
+  GET_ALL_BLOG_DATES_SUCCESS: `[${prefix}]GET_ALL_BLOG_DATES->SUCCESS`,
+  GET_ALL_BLOG_DATES_FAILURE: `[${prefix}]GET_ALL_BLOG_DATES->FAILURE`,
+
   GET_ALL_TAGS: `[${prefix}]GET_ALL_TAGS`,
   GET_ALL_TAGS_SUCCESS: `[${prefix}]GET_ALL_TAGS->SUCCESS`,
   GET_ALL_TAGS_FAILURE: `[${prefix}]GET_ALL_TAGS->FAILURE`,
@@ -135,6 +139,24 @@ export const getAllBlogsSuccess = (data) => ({
 
 export const getAllBlogsFailure = (errorMessage) => ({
   type: definition.GET_ALL_BLOGS_FAILURE,
+  payload: {
+    error: errorMessage
+  },
+});
+
+export const getAllBlogDates = () => ({
+  type: definition.GET_ALL_BLOG_DATES,
+});
+
+export const getAllBlogDatesSuccess = (data) => ({
+  type: definition.GET_ALL_BLOG_DATES_SUCCESS,
+  payload: {
+    response: data
+  },
+});
+
+export const getAllBlogDatesFailure = (errorMessage) => ({
+  type: definition.GET_ALL_BLOG_DATES_FAILURE,
   payload: {
     error: errorMessage
   },

@@ -3,10 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import { AppbarContainer } from '../containers';
 
 export class PageBase extends React.PureComponent {
-  renderIf() {
-    return true;
-  }
-
   renderComponent() {
     throw new Error('renderComponent needs to be implemented');
   }
@@ -21,7 +17,8 @@ export class PageBase extends React.PureComponent {
         alignItems="flex-start"
       >
         <AppbarContainer />
-        {this.renderIf() && this.renderComponent()}
+        {this.renderSidebar && this.renderSidebar()}
+        {this.renderComponent()}
       </Grid>
     )
   }
